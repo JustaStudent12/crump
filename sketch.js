@@ -3,8 +3,9 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Constraint=Matter.Constraint;
 const Render = Matter.Render;
-var dustbinObj, paperObject,groundObject	
+var dustbin1, paper1,ground1,sling;	
 var world;
 
 
@@ -15,9 +16,10 @@ function setup() {
 
 	engine = Engine.create();
 	world = engine.world;
-	dustbinObj=new dustbin(1200,650);
-	paperObject=new paper(200,450,40);
-	groundObject=new ground(width/2,670,width,20);
+	dustbin1=new dustbin(1200,650);
+	paper1=new paper(200,450,40);
+	ground1=new ground(width/2,670,width,20);
+	sling=new SlingShot(paper1,{x:200,y:450});
 	//Create a Ground
 	
 
@@ -33,10 +35,10 @@ function draw() {
   rectMode(CENTER);
   background(0);
  
-  dustbinObj.display();
-  paperObject.display();
-  groundObject.display();
-  
+  dustbin1.display();
+  paper1.display();
+  ground1.display();
+  sling.display();
  
   
   
@@ -46,7 +48,7 @@ function draw() {
 function keyPressed() {
   	if (keyCode === UP_ARROW) {
 
-    	Matter.Body.applyForce(paperObject.body,paperObject.body.position,{x:85,y:-85});
+    	Matter.Body.applyForce(paper1.body,paper1.body.position,{x:85,y:-85});
     
   	}
 }

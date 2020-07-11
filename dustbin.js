@@ -1,7 +1,7 @@
 class dustbin
 {
 	constructor(x,y)
-	{
+	{this.image=loadImage("sprites/dustImg.png")
 		this.x=x;
 		this.y=y;
 		this.dustbinWidth=200;
@@ -52,8 +52,10 @@ class dustbin
 			pop()
 
 			push()
-			translate(posBottom.x, posBottom.y);
+			translate( posBottom.x,posBottom.y);
 			rectMode(CENTER)
+			imageMode(CENTER);
+			image(this.image, posBottom.x,posBottom.y,this.dustbinWidth, this.wallThickness);
 			//strokeWeight(4);
 			stroke(255)
 			angleMode(RADIANS)
